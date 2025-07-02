@@ -3,52 +3,71 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Админка - Создать гайд</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Админка — Добавить гайд</title>
+    <link rel="stylesheet" href="css/import.css">
+    <link rel="stylesheet" href="admin.css">
     <script defer src="admin.js"></script>
 </head>
 
 <body>
-    <h1>Создание гайда</h1>
-    <form id="guideForm">
-        <label>
-            Название подземелья/рейда:
-            <input type="text" name="title" required>
-        </label>
-        <label>
-            Тип:
-            <select name="type">
-                <option value="Рейд">Рейд</option>
-                <option value="Подземелье">Подземелье</option>
-            </select>
-        </label>
-        <label>
-            Тип сложности:
-            <select name="difficulty">
-                <option>Обычное</option>
-                <option>Героичное</option>
-                <option>Эпохальное</option>
-            </select>
-        </label>
-        <label>
-            Дополнение:
-            <input type="text" name="addon" list="addonList">
-            <datalist id="addonList"></datalist>
-        </label>
-        <label>
-            Картинка карты:
-            <input type="text" name="mapImage" placeholder="URL к картинке">
-        </label>
-        <label>
-            Краткое описание:
-            <textarea name="summary"></textarea>
-        </label>
-        <h2>Боссы</h2>
-        <div id="bosses"></div>
-        <button type="button" onclick="addBoss()">Добавить босса</button>
-        <br><br>
-        <button type="submit">Сохранить гайд</button>
-    </form>
+    <div class="admin-wrap">
+        <div class="admin-title">Создание гайда</div>
+        <form class="guide-form" id="guideForm" autocomplete="off">
+            <label>
+                Название подземелья/рейда:
+                <input type="text" name="title" required>
+            </label>
+            <label>
+                Тип:
+                <select name="type">
+                    <option value="Рейд">Рейд</option>
+                    <option value="Подземелье">Подземелье</option>
+                </select>
+            </label>
+            <label>
+                Тип сложности:
+                <select name="difficulty">
+                    <option>Обычное</option>
+                    <option>Героичное</option>
+                    <option>Эпохальное</option>
+                </select>
+            </label>
+            <label>
+                Дополнение:
+                <select name="addon" id="addonSelect" required>
+                    <option value="">Выберите дополнение...</option>
+                    <option value="Classic">Classic</option>
+                    <option value="The Burning Crusade">The Burning Crusade</option>
+                    <option value="Wrath of the Lich King">Wrath of the Lich King</option>
+                    <option value="Cataclysm">Cataclysm</option>
+                    <option value="Mists of Pandaria">Mists of Pandaria</option>
+                    <option value="Warlords of Draenor">Warlords of Draenor</option>
+                    <option value="Legion">Legion</option>
+                    <option value="Battle for Azeroth">Battle for Azeroth</option>
+                    <option value="Shadowlands">Shadowlands</option>
+                    <option value="Dragonflight">Dragonflight</option>
+                    <option value="Другое">Другое</option>
+                </select>
+                <input type="text" name="addonOther" id="addonOther" placeholder="Введите дополнение"
+                    style="display:none; margin-top:6px;">
+            </label>
+            <label>
+                Картинка карты:
+                <input type="text" name="mapImage" placeholder="URL к картинке">
+            </label>
+            <label>
+                Краткое описание:
+                <textarea name="summary"></textarea>
+            </label>
+            <div>
+                <span class="group-label">Боссы:</span>
+                <div id="bosses"></div>
+                <button type="button" class="add-btn" id="addBossBtn">+ Босс</button>
+            </div>
+            <button type="submit" class="submit-btn">Сохранить гайд</button>
+            <div id="msg" class="msg"></div>
+        </form>
+    </div>
 </body>
 
 </html>

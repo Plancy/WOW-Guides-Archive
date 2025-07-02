@@ -1,335 +1,90 @@
-@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
-
-/* --------- Базовые --------- */
-body {
-    margin: 0;
-    background: linear-gradient(135deg, #232629 60%, #18191d 100%);
-    color: #e9d9b6;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    min-height: 100vh;
+/* --------- Навигация для страницы гайда --------- */
+.wow-header {
+    background: linear-gradient(90deg, #14141a 80%, #191922 100%);
+    border-bottom: 2.5px solid #332408;
+    box-shadow: 0 2px 24px #000a;
+    padding: 0;
 }
-
-/* --------- Хедер --------- */
-header {
-    background: #18191d;
-    border-bottom: 2.5px solid #79611f;
+.wow-header-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 18px 0 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+}
+.wow-guide-title-head {
+    margin: 0 auto;
+    padding: 12px 0 10px 0;
     text-align: center;
-    box-shadow: 0 2px 20px #000a;
-    padding: 22px 0 14px 0;
-    position: relative;
-}
-
-header h1 {
-    font-family: 'UnifrakturCook', serif;
-    color: #ffe56b;
-    font-size: 2.2em;
-    margin: 0 0 12px 0;
-    text-shadow: 0 2px 7px #000, 0 0 2px #806b23;
-    letter-spacing: 0.04em;
-}
-
-header input,
-header select {
-    margin: 0 8px 8px 0;
-    padding: 8px 11px;
-    border-radius: 7px;
-    border: 1.5px solid #473a1a;
-    background: #232629;
-    font-size: 1em;
-    color: #ffe9b2;
-    outline: none;
-    box-shadow: 0 1px 3px #0005;
-    transition: border-color .18s;
-}
-
-header input:focus,
-header select:focus {
-    border-color: #d7b94b;
-}
-
-/* ====== Легенда дополнений ====== */
-.addons-legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 9px;
-    padding: 9px 0 0 1px;
-    margin-bottom: 7px;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.legend-addon {
-    display: flex;
-    align-items: center;
-    border-radius: 8px;
-    padding: 3px 9px 3px 5px;
-    font-size: 1em;
-    background: #ffe56b20;
-    margin-right: 6px;
-    margin-bottom: 3px;
-    font-weight: 500;
-}
-
-.legend-icon {
-    font-size: 1.2em;
-    margin-right: 5px;
-    filter: drop-shadow(0 1px 1px #000a);
-}
-
-.legend-name {
-    font-size: 0.97em;
-    color: #ffe9b2;
-}
-
-/* --------- Основной контейнер --------- */
-main,
-.admin-wrap {
-    max-width: 900px;
-    margin: 36px auto 0 auto;
-    background: #232529e6;
-    border-radius: 14px;
-    box-shadow: 0 8px 32px #000b;
-    padding: 24px 10px 32px 10px;
-    min-height: 480px;
-    border: 2.5px solid #45370f;
-}
-
-@media (max-width: 900px) {
-
-    main,
-    .admin-wrap {
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 800px) {
-
-    main,
-    .admin-wrap {
-        padding: 8px 1vw 12px 1vw;
-    }
-}
-
-@media (max-width:600px) {
-    .admin-wrap {
-        padding: 8px 2vw;
-    }
-}
-
-/* --------- ГЛАВНАЯ: плитки гайдов --------- */
-#guidesList {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 22px;
-    margin-top: 18px;
-    padding: 0 7px;
-}
-
-.guide-card {
-    background: #18191d;
-    border: 2px solid #79611f;
-    border-radius: 13px;
-    box-shadow: 0 2px 10px #0007;
-    display: flex;
-    flex-direction: column;
-    min-height: 190px;
-    transition: box-shadow 0.18s, border-color 0.18s, transform 0.18s;
-    position: relative;
-    overflow: hidden;
-}
-
-.guide-card:hover {
-    box-shadow: 0 8px 24px #000c;
-    border-color: #ffe56b;
-    transform: translateY(-6px) scale(1.025);
-    z-index: 1;
-}
-
-.guide-card-imgwrap {
     width: 100%;
-    height: 110px;
-    background: #232629;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1.5px solid #79611f;
 }
-
-.guide-card-img {
-    width: 97%;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 9px;
-    box-shadow: 0 1px 7px #0006;
-    background: #232629;
-    margin-top: 4px;
-}
-
-.guide-card-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 13px 15px 16px 15px;
-    min-width: 0;
-}
-
-/* === Бейдж дополнения c иконкой === */
-.guide-card-addon {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 0.97em;
-    font-weight: bold;
-    color: #232529;
-    background: var(--addon-color, #ffe56b);
-    padding: 4px 11px 4px 11px;
-    border-radius: 9px;
-    box-shadow: 0 2px 10px #0004;
-    letter-spacing: 0.01em;
-    z-index: 2;
-    border: 1px solid #ffe56b;
-    text-shadow: 0 1px 2px #fff7;
-    opacity: 0.96;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.guide-card-addon .addon-icon {
-    font-size: 1.17em;
+.wow-logo {
+    font-size: 2em;
     vertical-align: middle;
-    margin-right: 4px;
-    filter: drop-shadow(0 1px 1px #000a);
+    margin-right: 7px;
+    filter: drop-shadow(0 0px 2px #ffe56b88);
 }
-
-.guide-card-addon .addon-name {
-    font-size: 1em;
-    vertical-align: middle;
-}
-
-.guide-card-addon[data-addon*="Classic"] {
-    --addon-color: #f2e1b0;
-}
-
-.guide-card-addon[data-addon*="Burning"] {
-    --addon-color: #fcae3b;
-}
-
-.guide-card-addon[data-addon*="Lich"] {
-    --addon-color: #b7e5fe;
-}
-
-.guide-card-addon[data-addon*="Cataclysm"] {
-    --addon-color: #e76918;
-}
-
-.guide-card-addon[data-addon*="Pandaria"] {
-    --addon-color: #b9f7ae;
-}
-
-.guide-card-addon[data-addon*="Draenor"] {
-    --addon-color: #c6a2ff;
-}
-
-.guide-card-addon[data-addon*="Legion"] {
-    --addon-color: #9bfa7b;
-}
-
-.guide-card-addon[data-addon*="Battle"] {
-    --addon-color: #f7cfc6;
-}
-
-.guide-card-addon[data-addon*="Shadowlands"] {
-    --addon-color: #bcbdf7;
-}
-
-.guide-card-addon[data-addon*="Dragonflight"] {
-    --addon-color: #ffd974;
-}
-
-.guide-card-addon[data-addon*="Другое"] {
-    --addon-color: #ffe56b;
-    color: #232529;
-}
-
-.guide-card-title {
+.wow-title-text {
     font-family: 'UnifrakturCook', serif;
     color: #ffe56b;
-    font-size: 1.17em;
+    font-size: 2.1em;
+    letter-spacing: 0.06em;
+    text-shadow: 0 2px 10px #000, 0 0 5px #806b23cc;
     font-weight: bold;
-    margin-bottom: 7px;
-    margin-top: 0;
-    text-shadow: 0 1px 0 #0008, 0 0 4px #bfa43a33;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    vertical-align: middle;
 }
-
-.guide-meta-row {
+.wow-guide-nav {
+    padding-top: 13px;
+    padding-bottom: 0;
+    width: 100%;
     display: flex;
-    gap: 13px;
-    font-size: 0.98em;
-    color: #e9d278;
-    margin-bottom: 4px;
+    align-items: flex-start;
 }
-
-.guide-meta-type {
-    font-weight: bold;
+.wow-back-link {
     color: #ffe56b;
-}
-
-.guide-meta-diff {
+    background: #19191b;
+    border: 1.5px solid #3f320b;
+    border-radius: 8px;
+    padding: 7px 18px 7px 10px;
     font-weight: bold;
-    color: #b5dc70;
-}
-
-.guide-card-summary {
-    color: #e9d9b6;
-    font-size: 0.99em;
-    margin-bottom: 0;
-    margin-top: 4px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.guide-card-link {
-    margin-top: 12px;
-    display: inline-block;
-    color: #ffe56b;
-    font-weight: bold;
-    font-size: 1em;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    border-bottom: none;
-    letter-spacing: 0.01em;
-    transition: color 0.15s;
-}
-
-.guide-card-link:hover {
-    color: #d7b94b;
-}
-
-/* Заглушка для картинки */
-.guide-card-placeholder {
-    width: 97%;
-    height: 100px;
-    background: repeating-linear-gradient(45deg, #232629, #232629 10px, #2a2d31 10px, #2a2d31 20px);
-    border-radius: 9px;
-    color: #ffe56b;
-    font-size: 1.4em;
-    display: flex;
+    font-size: 1.04em;
+    text-decoration: none;
+    box-shadow: 0 2px 10px #0003;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    opacity: 0.75;
-    box-shadow: 0 1px 7px #0006;
-    margin-top: 4px;
+    gap: 6px;
+    transition: background .16s, color .12s, border-color .13s;
+}
+.wow-back-link:hover {
+    background: #232325;
+    color: #fff3bb;
+    border-color: #ffe56b;
+}
+.wow-back-arrow {
+    font-size: 1.2em;
+    margin-right: 3px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+@media (max-width: 700px) {
+    .wow-header-inner { padding: 0 2vw; }
+    .wow-title-text { font-size: 1.3em;}
+    .wow-logo { font-size: 1.2em;}
+    .wow-back-link { font-size: 0.95em; padding: 7px 12px 7px 7px;}
+}
+@media (max-width: 500px) {
+    .wow-header-inner { padding: 0 1vw; }
+    .wow-guide-title-head { font-size: 1.1em; }
+    .wow-back-link { font-size: 0.91em; }
 }
 
 /* --------- Страница гайда --------- */
 .guide-main {
     max-width: 720px;
     margin: 0 auto;
+    padding-bottom: 30px;
 }
 
 .guide-title {

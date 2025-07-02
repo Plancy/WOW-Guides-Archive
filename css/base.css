@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+
+/* --------- Базовые --------- */
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #232629 60%, #18191d 100%);
+    color: #e9d9b6;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+}
+
+/* --------- Хедер --------- */
+header {
+    background: #18191d;
+    border-bottom: 2.5px solid #79611f;
+    text-align: center;
+    box-shadow: 0 2px 20px #000a;
+    padding: 22px 0 14px 0;
+    position: relative;
+}
+
+header h1 {
+    font-family: 'UnifrakturCook', serif;
+    color: #ffe56b;
+    font-size: 2.2em;
+    margin: 0 0 12px 0;
+    text-shadow: 0 2px 7px #000, 0 0 2px #806b23;
+    letter-spacing: 0.04em;
+}
+
+header input,
+header select {
+    margin: 0 8px 8px 0;
+    padding: 8px 11px;
+    border-radius: 7px;
+    border: 1.5px solid #473a1a;
+    background: #232629;
+    font-size: 1em;
+    color: #ffe9b2;
+    outline: none;
+    box-shadow: 0 1px 3px #0005;
+    transition: border-color .18s;
+}
+
+header input:focus,
+header select:focus {
+    border-color: #d7b94b;
+}
+
+/* --------- Основной контейнер --------- */
+main,
+.admin-wrap {
+    max-width: 900px;
+    margin: 36px auto 0 auto;
+    background: #232529e6;
+    border-radius: 14px;
+    box-shadow: 0 8px 32px #000b;
+    padding: 24px 10px 32px 10px;
+    min-height: 480px;
+    border: 2.5px solid #45370f;
+}
+
+@media (max-width: 900px) {
+
+    main,
+    .admin-wrap {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 800px) {
+
+    main,
+    .admin-wrap {
+        padding: 8px 1vw 12px 1vw;
+    }
+}
+
+@media (max-width:600px) {
+    .admin-wrap {
+        padding: 8px 2vw;
+    }
+}

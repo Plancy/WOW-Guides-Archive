@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Гайд</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://wow.zamimg.com/widgets/power.js"></script>
-    <script defer src="main.js"></script>
+    <link rel="stylesheet" href="css/import.css">
+    <script defer src="guide.js"></script>
+    <script src="https://wow.zamimg.com/js/tooltips.js"></script>
 </head>
-<body>
-    <header>
-        <a href="index.html" style="color:#a78742;text-decoration:none;font-size:1.05em;position:absolute;left:22px;top:18px;">&#8592; Назад</a>
-        <h1>Архив WOW Гайдов</h1>
+<body class="wow-dark">
+    <header class="wow-header">
+        <div class="wow-header-inner">
+            <div class="wow-guide-nav">
+                <a href="index.html" class="wow-back-link">
+                    <span class="wow-back-arrow">←</span> Все гайды
+                </a>
+            </div>
+            <h1 class="wow-guide-title-head">
+                <span class="wow-logo">🧙‍♂️</span>
+                <span class="wow-title-text">WOW Гайды</span>
+            </h1>
+        </div>
     </header>
-    <main class="guide-main">
-        <div id="guideContainer"></div>
-    </main>
+    <main class="guide-main" id="guideContainer"></main>
+    <footer class="wow-footer">
+        <span>© 2025 WOW Гайды | <a href="index.html">Главная</a></span>
+    </footer>
 </body>
 </html>

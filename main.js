@@ -1,135 +1,117 @@
-// Загрузка гайдов с сервера
-window.guides = [];
+const ADDONS = [
+    { name: "Classic", icon: "🗡️", color: "#bbaa7c" },
+    { name: "The Burning Crusade", icon: "🔥", color: "#c18c2b" },
+    { name: "Wrath of the Lich King", icon: "❄️", color: "#6ca3c7" },
+    { name: "Cataclysm", icon: "🌋", color: "#c76d1e" },
+    { name: "Mists of Pandaria", icon: "🐼", color: "#7ab97f" },
+    { name: "Warlords of Draenor", icon: "⚒️", color: "#a08dda" },
+    { name: "Legion", icon: "💚", color: "#70a856" },
+    { name: "Battle for Azeroth", icon: "⚔️", color: "#bda59c" },
+    { name: "Shadowlands", icon: "👻", color: "#888abf" },
+    { name: "Dragonflight", icon: "🐲", color: "#d9c35b" },
+    { name: "Другое", icon: "✨", color: "#ada266" }
+];
+
+function getAddonMeta(addon) {
+    return ADDONS.find(a => a.name === addon) || { icon: "✨", color: "#ada266", name: addon || "?" };
+}
+
+// Рендер фильтра
+function renderAddonFilter() {
+    const select = document.getElementById('addonFilter');
+    select.innerHTML = `<option value="">Все дополнения</option>` +
+        ADDONS.map(a => `<option value="${a.name}">${a.icon} ${a.name}</option>`).join('');
+}
+
+// Рендер легенды
+function renderLegend() {
+    const el = document.getElementById('addonsLegend');
+    el.innerHTML = ADDONS.map(a =>
+        `<span class="legend-addon" style="background:${a.color}20;border:1.5px solid ${a.color}77">
+      <span class="legend-icon" style="color:${a.color}">${a.icon}</span>
+      <span class="legend-name">${a.name}</span>
+    </span>`
+    ).join('');
+}
+
 async function loadGuides() {
-    try {
-        const res = await fetch('https://catnip-sulfuric-price.glitch.me/guides');
-        window.guides = await res.json();
-        if (typeof renderGuides === "function") renderGuides();
-        if (typeof renderGuidePage === "function") renderGuidePage();
-    } catch (e) {
-        console.error("Ошибка загрузки гайдов:", e);
-    }
+    const res = await fetch('https://catnip-sulfuric-price.glitch.me/guides');
+    let guides = await res.json();
+    // Новые гайды сверху:
+    guides.sort((a, b) => {
+        if (a.createdAt && b.createdAt) return new Date(b.createdAt) - new Date(a.createdAt);
+        if (a.id && b.id) return b.id - a.id;
+        return 0;
+    });
+    renderGuides(guides);
 }
-loadGuides();
 
-function renderGuides() {
-    const addonFilter = document.getElementById('addonFilter');
-    const searchInput = document.getElementById('searchInput');
-    const guidesList = document.getElementById('guidesList');
-    if (!window.guides || !guidesList) return;
-
-    // Заполним фильтр только если он пустой
-    if (addonFilter && addonFilter.options.length < 2) {
-        const addons = Array.from(new Set(window.guides.map(g => g.addon).filter(Boolean)));
-        addons.forEach(a => {
-            const opt = document.createElement('option');
-            opt.value = a;
-            opt.textContent = a;
-            addonFilter.append(opt);
-        });
+function renderGuides(guides) {
+    const list = document.getElementById('guidesList');
+    list.innerHTML = '';
+    if (guides.length === 0) {
+        list.innerHTML = '<div style="color:#ffe56b;font-size:1.2em;text-align:center">Гайды не найдены.</div>';
+        return;
     }
-
-    const addon = addonFilter ? addonFilter.value : '';
-    const search = searchInput ? searchInput.value.toLowerCase() : '';
-    guidesList.innerHTML = "";
-    window.guides
-        .filter(g => (!addon || g.addon === addon))
-        .filter(g => g.title.toLowerCase().includes(search) || (g.summary && g.summary.toLowerCase().includes(search)))
-        .forEach(g => {
-            const card = document.createElement('div');
-            card.className = "guide-card";
-            card.innerHTML = `
-                <img src="${g.mapImage || ''}" alt="${g.title}">
-                <div class="guide-card-content">
-                    <h2>${g.title}</h2>
-                    <div class="guide-meta">${g.type || ''} | ${g.difficulty || ''} | ${g.addon || ''}</div>
-                    <div class="guide-summary">${g.summary || ''}</div>
-                    <a href="guide.html?id=${g.id}">Читать &rarr;</a>
-                </div>
-            `;
-            guidesList.append(card);
-        });
-}
-function renderGuidePage() {
-    const guideContainer = document.getElementById('guideContainer');
-    if (!guideContainer) return;
-    const params = new URLSearchParams(location.search);
-    const guideId = Number(params.get("id"));
-    const guide = window.guides.find(g => g.id === guideId);
-
-    if (!guide) {
-        guideContainer.textContent = "Гайд не найден.";
-    } else {
-        let html = `
-            <div class="guide-section">
-                <span class="guide-title">${guide.title}</span>
-                <img src="${guide.mapImage || ''}" class="guide-map" alt="Карта">
-                <div class="guide-info-row">
-                    <b>${guide.type || ''}</b> (${guide.difficulty || ''}) | <b>Дополнение:</b> ${guide.addon || ''}
-                </div>
-                <div class="guide-summary">${guide.summary || ''}</div>
-                <div style="clear:both"></div>
-            </div>
-            <div class="guide-section">
-                <h2 style="margin-top:0;font-size:1.13em;color:#a78742;font-family:'UnifrakturCook',serif;">Боссы</h2>
-        `;
-        (guide.bosses || []).forEach(boss => {
-            html += `
-            <div class="guide-boss">
-                <div class="boss-header">
-                    <img src="${boss.image || ''}" class="boss-img" alt="Босс">
-                    <div>
-                        <div class="boss-title">
-                            <a href="${boss.wowhead || '#'}" rel="noopener" class="boss-link" data-wowhead="${boss.wowhead || ''}" target="_blank">${boss.name || ''}</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="boss-stages">
-            `;
-            (boss.stages || []).forEach(stage => {
-                html += `
-                    <div class="boss-stage">
-                        <div class="stage-title">${stage.name || ''}</div>
-                        <div class="role-row">
-                            <span class="role-label role-tank">Танк:</span>
-                            <span>${stage.tactics?.tank || ''}</span>
-                        </div>
-                        <div class="role-row">
-                            <span class="role-label role-heal">Хил:</span>
-                            <span>${stage.tactics?.heal || ''}</span>
-                        </div>
-                        <div class="role-row">
-                            <span class="role-label role-dps">ДПС:</span>
-                            <span>${stage.tactics?.dps || ''}</span>
-                        </div>
-                        <div class="dangers-section">
-                            <span class="danger-label">Опасности:</span>
-                            <ul style="margin:2px 0 0 0;padding-left:18px;">
-                                ${(stage.dangers || []).map(d => `<li class="danger-item">${d.danger} <span style="color:#b89d54;">— ${d.solution}</span></li>`).join("")}
-                            </ul>
-                        </div>
-                        <div class="tips-section">
-                            <span class="tip-label">Советы:</span>
-                            <ul style="margin:2px 0 0 0;padding-left:18px;">
-                                ${(stage.tips || []).map(t => `<li class="tip-item">${t}</li>`).join("")}
-                            </ul>
-                        </div>
-                    </div>
-                `;
-            });
-            html += "</div></div>";
-        });
-        html += `</div>`;
-        guideContainer.innerHTML = html;
+    for (const g of guides) {
+        const addonMeta = getAddonMeta(g.addon || '');
+        const addonBadge = `<span class="guide-card-addon" data-addon="${g.addon || ''}" style="background:${addonMeta.color};color:#232529">
+      <span class="addon-icon">${addonMeta.icon}</span>
+      <span class="addon-name">${addonMeta.name}</span>
+    </span>`;
+        let imgBlock = '';
+        if (g.mapImage && g.mapImage.trim()) {
+            imgBlock = `<div class="guide-card-imgwrap"><img class="guide-card-img" src="${g.mapImage}" alt="map"></div>`;
+        } else {
+            imgBlock = `<div class="guide-card-imgwrap"><div class="guide-card-placeholder">Нет карты</div></div>`;
+        }
+        const content = `
+      ${addonBadge}
+      ${imgBlock}
+      <div class="guide-card-content">
+        <div class="guide-card-title">${g.title}</div>
+        <div class="guide-meta-row">
+          <span class="guide-meta-type">${g.type || ''}</span>
+          <span class="guide-meta-diff">${g.difficulty || ''}</span>
+        </div>
+        <div class="guide-card-summary">${g.summary || ''}</div>
+        <a class="guide-card-link" href="guide.html?id=${g.id}">Подробнее &rarr;</a>
+      </div>
+    `;
+        const card = document.createElement('div');
+        card.className = 'guide-card';
+        card.innerHTML = content;
+        list.appendChild(card);
     }
 }
 
-// Вешаем обработчики только если элементы есть
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('addonFilter')) {
-        document.getElementById('addonFilter').onchange = renderGuides;
-    }
-    if (document.getElementById('searchInput')) {
-        document.getElementById('searchInput').oninput = renderGuides;
-    }
+// Фильтр и поиск (примерная реализация)
+document.addEventListener('DOMContentLoaded', function () {
+    renderAddonFilter();
+    renderLegend();
+    loadGuides();
+    document.getElementById('searchInput').oninput = filterGuides;
+    document.getElementById('addonFilter').onchange = filterGuides;
 });
+let cachedGuides = [];
+async function filterGuides() {
+    if (!cachedGuides.length) {
+        const res = await fetch('https://catnip-sulfuric-price.glitch.me/guides');
+        cachedGuides = await res.json();
+    }
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    const addon = document.getElementById('addonFilter').value;
+    let guides = cachedGuides.filter(g => {
+        let ok = true;
+        if (q) ok = (g.title || '').toLowerCase().includes(q) || (g.summary || '').toLowerCase().includes(q);
+        if (addon) ok = ok && g.addon === addon;
+        return ok;
+    });
+    // Новые гайды сверху:
+    guides.sort((a, b) => {
+        if (a.createdAt && b.createdAt) return new Date(b.createdAt) - new Date(a.createdAt);
+        if (a.id && b.id) return b.id - a.id;
+        return 0;
+    });
+    renderGuides(guides);
+}

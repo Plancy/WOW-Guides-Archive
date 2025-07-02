@@ -3,19 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>WOW Гайды: Архив</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/import.css">
     <script defer src="main.js"></script>
 </head>
-<body>
-    <header>
-        <h1>Архив WOW Гайдов</h1>
-        <input type="search" id="searchInput" placeholder="Поиск...">
-        <select id="addonFilter">
-            <option value="">Все дополнения</option>
-        </select>
+<body class="wow-dark">
+    <header class="wow-header">
+        <div class="wow-header-inner">
+            <h1>
+                <span class="wow-logo">🧙‍♂️</span>
+                <span class="wow-title-text">WOW Гайды</span>
+            </h1>
+            <div class="wow-header-sub">
+                <div class="wow-header-search-wrap">
+                    <input type="search" id="searchInput" placeholder="🔍 Поиск по гайдам..." class="wow-search-input">
+                    <select id="addonFilter" class="wow-addon-filter">
+                        <option value="">Все дополнения</option>
+                    </select>
+                </div>
+                <div id="addonsLegend" class="addons-legend"></div>
+            </div>
+        </div>
     </header>
-    <main>
-        <div id="guidesList"></div>
+    <main class="wow-main">
+        <div class="wow-guides-list-wrap">
+            <div id="guidesList"></div>
+        </div>
     </main>
+    <footer class="wow-footer">
+        <span>© 2025 WOW Гайды | Неофициальный архив гайдов по World of Warcraft | <a href="https://github.com/Plancy/wow-guides" target="_blank">GitHub</a></span>
+    </footer>
 </body>
 </html>

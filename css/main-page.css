@@ -1,0 +1,310 @@
+/* ======= Темный WOW стиль для главной ======= */
+body.wow-dark {
+    background: linear-gradient(120deg, #131418 0%, #15151a 100%) fixed;
+    color: #d4cbb1;
+    min-height: 100vh;
+}
+.wow-header {
+    background: linear-gradient(90deg, #14141a 80%, #191922 100%);
+    border-bottom: 2.5px solid #332408;
+    box-shadow: 0 2px 24px #000a;
+    padding: 0;
+}
+.wow-header-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 18px 0 18px;
+}
+.wow-title-text {
+    font-family: 'UnifrakturCook', serif;
+    color: #ffe56b;
+    font-size: 2.5em;
+    letter-spacing: 0.06em;
+    text-shadow: 0 2px 10px #000, 0 0 5px #806b23cc;
+    filter: brightness(1.12);
+    font-weight: bold;
+    vertical-align: middle;
+}
+.wow-logo {
+    font-size: 2em;
+    vertical-align: middle;
+    margin-right: 7px;
+    filter: drop-shadow(0 0px 2px #ffe56b88);
+}
+.wow-header-sub {
+    display: flex;
+    align-items: start;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.wow-header-search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 16px 0 0 0;
+}
+.wow-search-input {
+    background: #18181c;
+    border-radius: 8px;
+    border: 1.5px solid #2e2d29;
+    color: #ffe9b2;
+    font-size: 1.07em;
+    padding: 10px 16px;
+    min-width: 210px;
+    max-width: 330px;
+    transition: border-color .18s, background .18s;
+    outline: none;
+}
+.wow-search-input:focus {
+    border-color: #ffe56b;
+    background: #232325;
+}
+.wow-addon-filter {
+    background: #18181c;
+    border-radius: 8px;
+    border: 1.5px solid #2e2d29;
+    color: #ffe9b2;
+    font-size: 1.06em;
+    padding: 10px 12px;
+    min-width: 160px;
+    transition: border-color .18s, background .18s;
+    outline: none;
+}
+.wow-addon-filter:focus {
+    border-color: #ffe56b;
+    background: #232325;
+}
+.addons-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    padding: 16px 0 2px 1px;
+    margin-bottom: 7px;
+    align-items: center;
+    min-width: 0;
+}
+.legend-addon {
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    padding: 3px 11px 3px 7px;
+    font-size: 1em;
+    background: #ffe56b10;
+    margin-right: 3px;
+    margin-bottom: 2px;
+    font-weight: 500;
+    border: 1.5px solid #413a1d44;
+}
+.legend-icon {
+    font-size: 1.2em;
+    margin-right: 5px;
+    filter: drop-shadow(0 1px 1px #000a);
+}
+.legend-name {
+    font-size: 0.97em;
+    color: #ffe9b2;
+}
+.wow-main {
+    max-width: 1100px;
+    margin: 40px auto 0 auto;
+    padding: 0 12px;
+}
+.wow-guides-list-wrap {
+    background: linear-gradient(110deg, #17171a 80%, #141417 100%);
+    border-radius: 19px;
+    box-shadow: 0 8px 44px #000c;
+    border: 2.5px solid #31250b;
+    padding: 37px 17px 45px 17px;
+}
+#guidesList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 28px;
+    margin-top: 8px;
+    padding: 0 7px;
+}
+.guide-card {
+    background: linear-gradient(125deg, #18191d 70%, #242429 100%);
+    border: 2.5px solid #3f320b;
+    border-radius: 15px;
+    box-shadow: 0 2px 14px #000c;
+    display: flex;
+    flex-direction: column;
+    min-height: 210px;
+    transition: box-shadow 0.18s, border-color 0.18s, transform 0.18s;
+    position: relative;
+    overflow: hidden;
+}
+.guide-card:hover {
+    box-shadow: 0 12px 32px #000f, 0 0 0 2px #ffe56b55;
+    border-color: #ffe56b;
+    transform: translateY(-8px) scale(1.027);
+    z-index: 2;
+}
+.guide-card-imgwrap {
+    width: 100%;
+    height: 120px;
+    background: #222226;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1.5px solid #3f320b;
+}
+.guide-card-img {
+    width: 98%;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 1px 7px #0007;
+    background: #232629;
+    margin-top: 4px;
+}
+.guide-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 18px 17px 16px 17px;
+    min-width: 0;
+}
+.guide-card-addon {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    font-size: 1.03em;
+    font-weight: bold;
+    color: #232529;
+    background: var(--addon-color, #ffe56b);
+    padding: 4px 12px 4px 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px #0003;
+    letter-spacing: 0.01em;
+    z-index: 2;
+    border: 1.5px solid #ffe56b;
+    text-shadow: 0 1px 2px #fff5;
+    opacity: 0.97;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.guide-card-addon .addon-icon {
+    font-size: 1.15em;
+    vertical-align: middle;
+    margin-right: 4px;
+    filter: drop-shadow(0 1px 1px #000a);
+}
+.guide-card-addon .addon-name {
+    font-size: 1em;
+    vertical-align: middle;
+}
+.guide-card-addon[data-addon*="Classic"] { --addon-color: #bbaa7c; }
+.guide-card-addon[data-addon*="Burning"] { --addon-color: #c18c2b; }
+.guide-card-addon[data-addon*="Lich"] { --addon-color: #6ca3c7; }
+.guide-card-addon[data-addon*="Cataclysm"] { --addon-color: #c76d1e; }
+.guide-card-addon[data-addon*="Pandaria"] { --addon-color: #7ab97f; }
+.guide-card-addon[data-addon*="Draenor"] { --addon-color: #a08dda; }
+.guide-card-addon[data-addon*="Legion"] { --addon-color: #70a856; }
+.guide-card-addon[data-addon*="Battle"] { --addon-color: #bda59c; }
+.guide-card-addon[data-addon*="Shadowlands"] { --addon-color: #888abf; }
+.guide-card-addon[data-addon*="Dragonflight"] { --addon-color: #d9c35b; }
+.guide-card-addon[data-addon*="Другое"] { --addon-color: #ada266; color: #232529; }
+.guide-card-title {
+    font-family: 'UnifrakturCook', serif;
+    color: #ffe56b;
+    font-size: 1.22em;
+    font-weight: bold;
+    margin-bottom: 7px;
+    margin-top: 0;
+    text-shadow: 0 1px 0 #000a, 0 0 8px #bfa43a33;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+}
+.guide-meta-row {
+    display: flex;
+    gap: 13px;
+    font-size: 1.04em;
+    color: #e9d278;
+    margin-bottom: 4px;
+}
+.guide-meta-type {
+    font-weight: bold;
+    color: #ffe56b;
+}
+.guide-meta-diff {
+    font-weight: bold;
+    color: #b5dc70;
+}
+.guide-card-summary {
+    color: #e9d9b6;
+    font-size: 1.02em;
+    margin-bottom: 0;
+    margin-top: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.guide-card-link {
+    margin-top: 16px;
+    display: inline-block;
+    color: #ffe56b;
+    font-weight: bold;
+    font-size: 1.08em;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    border-bottom: none;
+    letter-spacing: 0.01em;
+    transition: color 0.16s;
+}
+.guide-card-link:hover {
+    color: #d7b94b;
+}
+.guide-card-placeholder {
+    width: 97%;
+    height: 110px;
+    background: repeating-linear-gradient(45deg, #18181b, #18181b 13px, #232325 13px, #232325 26px);
+    border-radius: 10px;
+    color: #ffe56b;
+    font-size: 1.34em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.75;
+    box-shadow: 0 1px 7px #0006;
+    margin-top: 4px;
+}
+@media (max-width: 900px) {
+    .wow-main { max-width: 100%; }
+    .wow-header-inner { max-width: 100%; }
+}
+@media (max-width: 700px) {
+    .wow-guides-list-wrap { padding: 7vw 1vw 22px 1vw; }
+    .wow-header-inner { padding: 0 2vw; }
+    .wow-title-text { font-size: 1.5em;}
+    .wow-logo { font-size: 1.4em;}
+}
+@media (max-width: 500px) {
+    .wow-guides-list-wrap { padding: 2vw 0vw 8vw 0vw; }
+    .wow-header-search-wrap { flex-direction: column; gap: 7px; }
+    .wow-title-text { font-size: 1.13em;}
+    .wow-logo { font-size: 1.1em;}
+}
+.wow-footer {
+    background: #18181c;
+    color: #6c653a;
+    font-size: 0.98em;
+    text-align: center;
+    padding: 24px 0 12px 0;
+    margin-top: 44px;
+    border-top: 2.5px solid #332408;
+}
+.wow-footer a {
+    color: #ffe56b;
+    text-decoration: underline;
+    transition: color .13s;
+}
+.wow-footer a:hover {
+    color: #d7b94b;
+}
