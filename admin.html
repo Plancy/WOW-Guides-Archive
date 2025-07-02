@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Админка - Создать гайд</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="admin.js"></script>
+</head>
+
+<body>
+    <h1>Создание гайда</h1>
+    <form id="guideForm">
+        <label>
+            Название подземелья/рейда:
+            <input type="text" name="title" required>
+        </label>
+        <label>
+            Тип:
+            <select name="type">
+                <option value="Рейд">Рейд</option>
+                <option value="Подземелье">Подземелье</option>
+            </select>
+        </label>
+        <label>
+            Тип сложности:
+            <select name="difficulty">
+                <option>Обычное</option>
+                <option>Героичное</option>
+                <option>Эпохальное</option>
+            </select>
+        </label>
+        <label>
+            Дополнение:
+            <input type="text" name="addon" list="addonList">
+            <datalist id="addonList"></datalist>
+        </label>
+        <label>
+            Картинка карты:
+            <input type="text" name="mapImage" placeholder="URL к картинке">
+        </label>
+        <label>
+            Краткое описание:
+            <textarea name="summary"></textarea>
+        </label>
+        <h2>Боссы</h2>
+        <div id="bosses"></div>
+        <button type="button" onclick="addBoss()">Добавить босса</button>
+        <br><br>
+        <button type="submit">Сохранить гайд</button>
+    </form>
+</body>
+
+</html>

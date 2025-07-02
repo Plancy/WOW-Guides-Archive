@@ -1,0 +1,25 @@
+<form id="addForm">
+  <input name="title" placeholder="Заголовок" required><br>
+  <input name="description" placeholder="Описание" required><br>
+  <input name="author" placeholder="Автор" required><br>
+  <button type="submit">Добавить гайд</button>
+</form>
+<div id="result"></div>
+<script>
+document.getElementById('addForm').onsubmit = async e => {
+  e.preventDefault();
+  const form = e.target;
+  const guide = {
+    title: form.title.value,
+    description: form.description.value,
+    author: form.author.value
+  };
+  const res = await fetch('https://catnip-sulfuric-price.glitch.me/guides', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(guide)
+  });
+  document.getElementById('result').innerText = await res.text();
+  form.reset();
+};
+</script>

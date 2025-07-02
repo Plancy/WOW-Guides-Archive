@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #232629 60%, #18191d 100%);
+    color: #e9d9b6;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+}
+
+header {
+    background: #18191d;
+    border-bottom: 2.5px solid #79611f;
+    text-align: center;
+    box-shadow: 0 2px 20px #000a;
+    padding: 22px 0 14px 0;
+    position: relative;
+}
+
+header h1 {
+    font-family: 'UnifrakturCook', serif;
+    color: #ffe56b;
+    font-size: 2.2em;
+    margin: 0 0 12px 0;
+    text-shadow: 0 2px 7px #000, 0 0 2px #806b23;
+    letter-spacing: 0.04em;
+}
+
+header input,
+header select {
+    margin: 0 8px 8px 0;
+    padding: 8px 11px;
+    border-radius: 7px;
+    border: 1.5px solid #473a1a;
+    background: #232629;
+    font-size: 1em;
+    color: #ffe9b2;
+    outline: none;
+    box-shadow: 0 1px 3px #0005;
+}
+
+main {
+    max-width: 900px;
+    margin: 36px auto 0 auto;
+    background: #232529e6;
+    border-radius: 14px;
+    box-shadow: 0 8px 32px #000b;
+    padding: 24px 10px 32px 10px;
+    min-height: 480px;
+    border: 2.5px solid #45370f;
+}
+
+#guidesList {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Карточки гайдов */
+.guide-card {
+    display: flex;
+    align-items: flex-start;
+    background: #18191d;
+    border: 2px solid #79611f;
+    border-radius: 11px;
+    box-shadow: 0 2px 10px #0007;
+    padding: 10px 14px;
+    transition: box-shadow 0.16s, border-color 0.15s;
+    position: relative;
+    min-height: 80px;
+}
+
+.guide-card:hover {
+    box-shadow: 0 8px 22px #000b;
+    border-color: #d7b94b;
+    background: #23252b;
+}
+
+.guide-card img {
+    width: 82px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1.5px solid #79611f;
+    margin-right: 14px;
+    box-shadow: 0 0 4px #000a;
+    flex-shrink: 0;
+    background: #23262c;
+}
+
+.guide-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.guide-card h2 {
+    margin: 0 0 3px 0;
+    font-size: 1.13em;
+    font-family: 'UnifrakturCook', serif;
+    color: #ffe56b;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #0008, 0 0 4px #bfa43a33;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.guide-meta {
+    font-size: .95em;
+    color: #e9d278;
+    margin-bottom: 2px;
+    margin-top: 0;
+    letter-spacing: 0.01em;
+}
+
+.guide-summary {
+    color: #e9d9b6;
+    font-size: 0.98em;
+    margin-bottom: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.guide-card a {
+    align-self: flex-end;
+    color: #ffe56b;
+    font-size: 0.97em;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-top: 2px;
+    margin-right: 2px;
+    transition: color 0.13s;
+    text-underline-offset: 2px;
+    border-bottom: none;
+}
+
+.guide-card a:hover {
+    color: #d7b94b;
+}
+
+/* Страница гайда */
+.guide-main {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.guide-title {
+    font-size: 1.5em;
+    font-family: 'UnifrakturCook', serif;
+    color: #ffe56b;
+    margin-bottom: 8px;
+    font-weight: bold;
+    text-shadow: 0 2px 6px #000, 0 0 2px #bfa43a;
+    border-bottom: 2px solid #79611f;
+    padding-bottom: 4px;
+}
+
+.guide-section {
+    background: #18191d;
+    border-radius: 9px;
+    border: 2px solid #79611f;
+    box-shadow: 0 2px 10px #000a;
+    padding: 16px 10px 8px 10px;
+    margin-bottom: 14px;
+    position: relative;
+}
+
+.guide-map {
+    float: right;
+    margin-left: 14px;
+    border-radius: 6px;
+    border: 1.5px solid #79611f;
+    box-shadow: 0 0 10px #000a;
+    max-width: 140px;
+    max-height: 90px;
+    background: #23262c;
+}
+
+.guide-info-row {
+    font-size: 0.98em;
+    color: #e9d278;
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+
+.guide-summary {
+    margin: 6px 0 0 0;
+    font-size: 1.04em;
+    color: #e6ddc7;
+}
+
+.guide-boss {
+    margin-bottom: 8px;
+    border-bottom: 1px dashed #79611f;
+    padding-bottom: 7px;
+}
+
+.guide-boss:last-child {
+    border-bottom: none;
+}
+
+.boss-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+}
+
+.boss-img {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1.5px solid #79611f;
+    background: #23262c;
+    margin-top: 2px;
+}
+
+.boss-title {
+    font-size: 1.07em;
+    font-family: 'UnifrakturCook', serif;
+    color: #ffe56b;
+    margin-bottom: 0;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #0008;
+}
+
+.boss-link {
+    color: #e9d278;
+    font-size: 0.97em;
+    margin-left: 6px;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color .13s;
+}
+
+.boss-link:hover {
+    color: #ffe56b;
+}
+
+.boss-stages {
+    margin-top: 4px;
+    margin-left: 7px;
+}
+
+.boss-stage {
+    background: #232629;
+    border-radius: 5px;
+    padding: 6px 7px 6px 10px;
+    margin-bottom: 6px;
+    border-left: 3px solid #79611f;
+    box-shadow: 0 1.5px 4px #0009;
+}
+
+.stage-title {
+    font-size: 0.99em;
+    color: #e9d278;
+    font-family: 'UnifrakturCook', serif;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.role-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 0;
+}
+
+.role-label {
+    min-width: 31px;
+    font-weight: 600;
+    color: #e9d278;
+    font-size: 0.97em;
+}
+
+.role-tank {
+    color: #69f2b0;
+}
+
+.role-heal {
+    color: #53a5ff;
+}
+
+.role-dps {
+    color: #ff7878;
+}
+
+.dangers-section,
+.tips-section {
+    margin-top: 2px;
+}
+
+.danger-label {
+    color: #ff7878;
+    font-weight: bold;
+}
+
+.tip-label {
+    color: #69f2b0;
+    font-weight: bold;
+}
+
+.danger-item,
+.tip-item {
+    margin-bottom: 0;
+    font-size: 0.96em;
+}
+
+a.top-link {
+    color: #ffe56b;
+    text-decoration: none;
+    font-size: 1.03em;
+    position: absolute;
+    left: 22px;
+    top: 18px;
+    font-family: 'UnifrakturCook', serif;
+}
+
+a.top-link:hover {
+    color: #e9d278;
+}
+
+@media (max-width: 800px) {
+    main {
+        padding: 8px 1vw 12px 1vw;
+    }
+
+    .guide-main {
+        padding: 0 2vw;
+    }
+
+    .guide-map {
+        float: none;
+        margin: 0 0 8px 0;
+        display: block;
+    }
+}
